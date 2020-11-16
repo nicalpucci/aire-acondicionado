@@ -19,7 +19,7 @@ public class AireAcondicionado {
      * subir temperatura
      */
     public void subirTemperatura(){
-        if((temperatura + incremento) < max){
+        if((temperatura + incremento) <= max){
             temperatura += incremento;
         }
     }
@@ -28,7 +28,7 @@ public class AireAcondicionado {
      * bajar temperatura
      */
     public void bajarTemperatura(){
-        if((temperatura - incremento) > min){
+        if((temperatura - incremento) >= min){
             temperatura -= incremento;
         }
     }
@@ -37,6 +37,8 @@ public class AireAcondicionado {
      * cambiar el incremento
      */
     public void setIncremento(double nuevoIncremento){
-        incremento = nuevoIncremento;
+        if(nuevoIncremento > 0){
+            incremento = nuevoIncremento;
+        }
     }
 }
