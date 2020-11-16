@@ -4,6 +4,9 @@ public class AireAcondicionado {
     private double min;
     private double max;
     private double incremento;
+    private int vecesCambiada;
+    private double tMaxAlc;
+    private double tMinAlc;
     
     /**
      * constructor
@@ -13,6 +16,9 @@ public class AireAcondicionado {
         incremento = 5.0;
         min = minimo;
         max = maximo;
+        vecesCambiada = 0;
+        tMaxAlc = temperatura;
+        tMinAlc = temperatura;
     }
     
     /**
@@ -21,6 +27,10 @@ public class AireAcondicionado {
     public void subirTemperatura(){
         if((temperatura + incremento) <= max){
             temperatura += incremento;
+            vecesCambiada++;
+        }
+        if((temperatura + incremento) > tMaxAlc){
+            tMaxAlc = temperatura;
         }
     }
     
@@ -30,6 +40,10 @@ public class AireAcondicionado {
     public void bajarTemperatura(){
         if((temperatura - incremento) >= min){
             temperatura -= incremento;
+            vecesCambiada++;
+        }
+        if((temperatura - incremento) < tMinAlc){
+            tMinAlc = temperatura;
         }
     }
     
@@ -40,5 +54,24 @@ public class AireAcondicionado {
         if(nuevoIncremento > 0){
             incremento = nuevoIncremento;
         }
+    }
+    
+    /**
+     * metodo getter estadisticas
+     */
+    public String getEstadisticas(){
+        String status;
+        status = ("Temperatura actual: "+temperatura+"ºC - Temperatura máxima posible: "+
+        max+"ºC - Temperatura mínima posible: "+min+"ºC - Temperaturas máxima/mínima alcanzadas: "+tMaxAlc+"ºC/"+tMinAlc+
+        "ºC - Temperatura cambiada "+vecesCambiada+" veces");
+        return status;
+    }
+    /**
+     * seccion de estadisticas
+     */
+    public void mostrarEstadisticas(){
+        System.out.println("Temperatura actual: "+temperatura+"ºC - Temperatura máxima posible: "+
+        max+"ºC - Temperatura mínima posible: "+min+"ºC - Temperaturas máxima/mínima alcanzadas: "+tMaxAlc+"ºC/"+tMinAlc+
+        "ºC - Temperatura cambiada "+vecesCambiada+" veces");
     }
 }
