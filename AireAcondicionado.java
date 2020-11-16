@@ -28,9 +28,9 @@ public class AireAcondicionado {
         if((temperatura + incremento) <= max){
             temperatura += incremento;
             vecesCambiada++;
-        }
-        if((temperatura + incremento) > tMaxAlc){
-            tMaxAlc = temperatura;
+            if(temperatura > tMaxAlc){
+                tMaxAlc = temperatura;
+            }
         }
     }
     
@@ -41,9 +41,9 @@ public class AireAcondicionado {
         if((temperatura - incremento) >= min){
             temperatura -= incremento;
             vecesCambiada++;
-        }
-        if((temperatura - incremento) < tMinAlc){
-            tMinAlc = temperatura;
+            if(temperatura < tMinAlc){
+                tMinAlc = temperatura;
+            }
         }
     }
     
